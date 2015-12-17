@@ -666,9 +666,9 @@ instance Applicative MaybeListZipper where
 -- [[1] >2< [3,4,5],[] >1< [2,3,4,5]] >[2,1] >3< [4,5]< [[3,2,1] >4< [5],[4,3,2,1] >5< []]
 instance Extend ListZipper where
   (<<=) f z =
-    ListZipper (all moveLeft z) (f z) (all moveRight z)
+    ListZipper (all' moveLeft z) (f z) (all' moveRight z)
     where next a = (f a, a)
-          all f' = unfoldr ((next <$>) . toOptional . f')
+          all' f' = unfoldr ((next <$>) . toOptional . f')
 
 -- | Implement the `Extend` instance for `MaybeListZipper`.
 -- This instance will use the `Extend` instance for `ListZipper`.
