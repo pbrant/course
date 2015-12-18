@@ -11,7 +11,6 @@ import Course.Person
 import Course.Functor
 import Course.Applicative
 import Course.Monad
-import Course.Traversable
 import Course.List
 import Course.Optional
 -- import Data.Char
@@ -607,6 +606,3 @@ instance Monad Parser where
     -> Parser a
     -> Parser b
   (=<<) = bindParser
-
--- instance Traversable Parser where
---   traverse = (sequenceParser .) . (<$>)
